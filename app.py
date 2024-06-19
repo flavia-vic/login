@@ -1,4 +1,4 @@
-from flask import Flask,flash,redirect, url_for
+from flask import Flask,flash,redirect, url_for, request
 from flask import render_template
 from config import Config
 from db import db
@@ -23,12 +23,15 @@ def register():
         )
         new_user.save()
         flash(f'Account created for {form.name.data}!', 'success')
-        return redirect(url_for('login'))  # Redireciona para a página de login
+        return redirect(url_for('home', name=form.name.data))  
     return render_template('register.html', form=form)
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
+
+@app.route('/home')
+def home():
+    name = request.args.get('name', '')  # Obtém o nome do usuário da URL
+    return render_template('home.html', name=name)
+
     
 db.init_app(app)
 

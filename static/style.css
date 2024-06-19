@@ -17,6 +17,11 @@ h1 {
     padding: 5px 0;
     border-bottom: 1px solid black;
 }
+
+h2 {
+    text-align: center;
+    padding: 5px 0;
+}
 form .txt_field {
     position: relative;
     border-bottom: 2px solid #000;
